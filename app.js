@@ -1,4 +1,4 @@
-/* LEO 软件中心 — 数据驱动渲染 + GitHub Release 实时同步 */
+/* LEO 软件中心 — 数据驱动渲染；下载一律跳转到 GitHub，站点本身不托管安装包 */
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const num = n => (n == null ? '' : new Intl.NumberFormat().format(n));
@@ -9,6 +9,9 @@ const fmtSize = b => {
   return b.toFixed(b < 10 && i > 0 ? 1 : 0) + ' ' + u[i];
 };
 const GH = 'https://github.com/';
+/* 下载地址永远指向 GitHub 仓库页面，站点不存放任何安装包 */
+const repoUrl = p => (p.repo ? GH + p.repo : (p.releaseUrl || '#'));
+const releasesUrl = p => (p.repo ? `${GH}${p.repo}/releases/latest` : (p.releaseUrl || '#'));
 
 let PRODUCTS = [];
 
@@ -27,13 +30,17 @@ function renderFilters() {
 
 function actionButtons(p, assets) {
   const b = [];
-  (assets || []).forEach(a => {
-    const href = a.url || (a.file && p.repo ? `${GH}${p.repo}/releases/latest/download/${a.file}` : p.releaseUrl || `${GH}${p.repo}`);
-    b.push(`<a class="btn primary" href="${esc(href)}">⬇ ${esc(a.label || a.name || '下载')}${a.size ? ` · ${esc(a.size)}` : ''}</a>`);
-  });
-  if (p.clone) b.push(`<a class="btn ghost" href="${GH}${esc(p.repo)}" target="_blank" rel="noopener">源码 ↗</a>`);
-  else if (p.repo && !(assets || []).length) b.push(`<a class="btn primary" href="${GH}${esc(p.repo)}" target="_blank" rel="noopener">查看源码 ↗</a>`);
-  if (p.repo) b.push(`<a class="btn ghost" href="${GH}${esc(p.repo)}/releases" target="_blank" rel="noopener">版本记录</a>`);
+  const list = assets || [];
+  if (list.length) {
+    const size = [...new Set(list.map(a => a.size).filter(Boolean))].join(' / ');
+    b.push(`<a class="btn primary" href="${esc(releasesUrl(p))}" target="_blank" rel="noopener">⬇ 去 GitHub 下载${size ? ` · ${esc(size)}` : ''}</a>`);
+  } else if (p.repo) {
+    b.push(`<a class="btn primary" href="${esc(releasesUrl(p))}" target="_blank" rel="noopener">查看 GitHub ↗</a>`);
+  }
+  if (p.repo) {
+    b.push(`<a class="btn ghost" href="${esc(repoUrl(p))}" target="_blank" rel="noopener">源码 ↗</a>`);
+    b.push(`<a class="btn ghost" href="${GH}${esc(p.repo)}/releases" target="_blank" rel="noopener">版本记录</a>`);
+  }
   return b.join('');
 }
 
@@ -42,12 +49,10 @@ function detail(p) {
     ? `<ul class="feature-list">${p.features.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : '';
   const inst = (p.install || []).length
     ? `<ol class="install">${p.install.map(s => `<li>${esc(s)}</li>`).join('')}</ol>` : '';
-  const assets = (p.assets || []).map(a =>
-    `<div class="asset-row"><span>${esc(a.label || a.file || '')} <span class="muted small">${esc(a.size || '')}</span></span>
-     <a href="${esc(a.url || (a.file && p.repo ? `${GH}${p.repo}/releases/latest/download/${a.file}` : p.releaseUrl || '#'))}">下载 ⬇</a></div>`).join('');
-  if (!feats && !inst && !assets) return '';
+  if (!feats && !inst) return '';
   return `<details class="more"><summary>详情 · 安装说明</summary>
-    ${feats}${inst ? `<p class="muted small" style="margin:12px 0 0">安装步骤</p>${inst}` : ''}${assets}</details>`;
+    ${feats}${inst ? `<p class="muted small" style="margin:12px 0 0">安装步骤</p>${inst}` : ''}
+    ${p.repo ? `<p class="muted small" style="margin:12px 0 0">安装包托管在 GitHub：<a href="${esc(releasesUrl(p))}" target="_blank" rel="noopener">前往 Releases ↗</a></p>` : ''}</details>`;
 }
 
 function card(p) {
@@ -76,7 +81,7 @@ function renderGrid(cat) {
   enrich(list);
 }
 
-/* ---------- 拉取 GitHub 最新 release，实时更新版本 / 下载量 ---------- */
+/* ---------- 拉取 GitHub 最新 release，实时更新版本 / 下载量（仅用于展示，不托管文件）---------- */
 let stats = { downloads: 0, count: 0 };
 async function enrich(list) {
   stats = { downloads: 0, count: PRODUCTS.length };
@@ -89,9 +94,9 @@ async function enrich(list) {
       const live = (rel.assets || []);
       const dlCount = live.reduce((s, a) => s + (a.download_count || 0), 0);
       stats.downloads += dlCount;
-      const assets = live.map((a, i) => ({
-        label: (p.assets && p.assets[i] && p.assets[i].label) || a.name.replace(/\.[a-z0-9]+$/i, ''),
-        size: fmtSize(a.size), url: a.browser_download_url
+      const assets = live.map(a => ({
+        label: a.name.replace(/\.[a-z0-9]+$/i, ''),
+        size: fmtSize(a.size)
       }));
       const vb = document.getElementById('ver-' + p.id); if (vb && rel.tag_name) vb.textContent = rel.tag_name;
       const dl = document.getElementById('dl-' + p.id); if (dl && assets.length) dl.innerHTML = actionButtons(p, assets);

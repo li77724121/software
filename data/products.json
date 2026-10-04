@@ -17,13 +17,13 @@
       ],
       "license": "免费",
       "repo": "li77724121/docconvert",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "releaseUrl": "https://github.com/li77724121/docconvert/releases/latest",
       "assets": [
         {
           "label": "macOS · Apple 芯片",
-          "file": "DocConvert-1.0.0-macOS-arm64.dmg",
-          "size": "83 MB"
+          "file": "DocConvert-1.0.1-macOS-arm64.dmg",
+          "size": "93 MB"
         }
       ],
       "features": [
@@ -33,9 +33,10 @@
         "⚡ 拖入即转，结果立即可用"
       ],
       "install": [
-        "点上方按钮下载 .dmg 安装包",
+        "点「去 GitHub 下载」，在 GitHub Releases 页下载 .dmg",
         "打开 dmg，把 DocConvert 拖进「应用程序」",
-        "首次打开若提示“来自身份不明的开发者”：右键图标 → 打开"
+        "首次打开若提示「无法验证开发者」：右键图标 →打开 → 打开",
+        "或用终端执行一次：xattr -dr com.apple.quarantine /Applications/DocConvert.app"
       ]
     },
     {
@@ -43,8 +44,8 @@
       "name": "Leo AI OS",
       "emoji": "🦞",
       "category": "开源",
-      "tagline": "一个人 + AI 的操作系统（开源协作）",
-      "summary": "多任务监控大屏 · 知识库流水线 · AI 网格交易机器人。欢迎一起开发。",
+      "tagline": "本地自托管的多任务运维与知识库套件（开源协作）",
+      "summary": "多任务监控大屏 · 知识库流水线 · 交易监控中台。欢迎一起开发。",
       "platforms": [
         "macOS",
         "Linux"
@@ -55,9 +56,9 @@
       "releaseUrl": "https://github.com/li77724121/leo-ai-os",
       "clone": "git clone https://github.com/li77724121/leo-ai-os",
       "features": [
-        "🖥️ ops-dashboard —— 5 屏实时监控大屏（Hermes / NAS / 编辑器 / 事件流 / 交易中台）",
+        "🖥️ ops-dashboard —— 多屏实时监控大屏",
         "📚 知识库流水线 —— 自动整理双链笔记",
-        "🤖 AI 网格交易机器人 —— OKX 原生网格 + 双机哨兵",
+        "📈 交易监控中台 —— 网格策略状态监控与双机哨兵",
         "🐍 技术栈：Python · Flask · WebSocket · launchd"
       ],
       "install": [
