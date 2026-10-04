@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEO 软件 · 软件发布与下载</title>
+<meta name="description" content="一个人 + AI 的软件工作室：免费、本地优先、不收集数据。在这里下载并查看我发布的每一款软件。">
+<meta property="og:title" content="LEO 软件 · 软件发布与下载">
+<meta property="og:description" content="一个人 + AI 的软件工作室。免费、本地优先、不收集数据。">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./"><span class="logo">🦞</span><span>LEO <b>软件</b></span></a>
+  <nav>
+    <a href="#products">软件</a>
+    <a id="gh" href="https://github.com/li77724121" target="_blank" rel="noopener">GitHub ↗</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="kicker">一个人 + AI 的软件工作室</p>
+      <h1>我做的每一个工具，<br>都在这里发布。</h1>
+      <p class="sub">免费 · 本地优先 · 不收集数据。下载即用——无订阅、无积分、无水印。</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#products">看看软件 ↓</a>
+        <a class="btn ghost" id="hero-gh" href="https://github.com/li77724121" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="hero-stats" id="stats"></div>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <div class="section-head">
+      <h2>软件</h2>
+      <div class="filters" id="filters"></div>
+    </div>
+    <div class="grid" id="grid"><p class="muted">加载中…</p></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <strong>LEO 软件</strong>
+      <p class="muted small">一个人 + AI，持续发布。</p>
+    </div>
+    <div class="foot-links">
+      <a href="https://github.com/li77724121" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://li77724121.github.io/startup-guide/" target="_blank" rel="noopener">起步指南</a>
+    </div>
+  </div>
+  <p class="muted small center">© <span id="year"></span> LEO · 本地优先 · 免费</p>
+  <noscript><p class="muted small center">此页面需要 JavaScript 才能渲染软件列表。</p></noscript>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

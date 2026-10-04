@@ -1,0 +1,62 @@
+{
+  "site": {
+    "name": "LEO 软件",
+    "tagline": "一个人 + AI 的软件工作室 · 免费 · 本地优先",
+    "github": "https://github.com/li77724121",
+    "guides": "https://li77724121.github.io/startup-guide/"
+  },
+  "products": [
+    {
+      "id": "docconvert",
+      "name": "DocConvert",
+      "emoji": "📄",
+      "category": "下载",
+      "tagline": "本地文档转换器",
+      "summary": "Word / PPT / Excel / PDF → Markdown，100% 本地处理，文件不出你的电脑，永久免费。",
+      "platforms": ["macOS"],
+      "license": "免费",
+      "repo": "li77724121/docconvert",
+      "version": "1.0.0",
+      "releaseUrl": "https://github.com/li77724121/docconvert/releases/latest",
+      "assets": [
+        { "label": "macOS · Apple 芯片", "file": "DocConvert-1.0.0-macOS-arm64.dmg", "size": "83 MB" }
+      ],
+      "features": [
+        "🔒 100% 本地处理 —— 文件不上传任何服务器，合同/机密/个人文档不出电脑",
+        "🆓 永久免费 —— 无订阅、无积分、无水印",
+        "📄 多格式 —— Word(.docx) / PPT(.pptx) / Excel(.xlsx) / PDF → Markdown",
+        "⚡ 拖入即转，结果立即可用"
+      ],
+      "install": [
+        "点上方按钮下载 .dmg 安装包",
+        "打开 dmg，把 DocConvert 拖进「应用程序」",
+        "首次打开若提示“来自身份不明的开发者”：右键图标 → 打开"
+      ]
+    },
+    {
+      "id": "leo-ai-os",
+      "name": "Leo AI OS",
+      "emoji": "🦞",
+      "category": "开源",
+      "tagline": "一个人 + AI 的操作系统（开源协作）",
+      "summary": "多任务监控大屏 · 知识库流水线 · AI 网格交易机器人。欢迎一起开发。",
+      "platforms": ["macOS", "Linux"],
+      "license": "开源",
+      "repo": "li77724121/leo-ai-os",
+      "version": "",
+      "releaseUrl": "https://github.com/li77724121/leo-ai-os",
+      "clone": "git clone https://github.com/li77724121/leo-ai-os",
+      "features": [
+        "🖥️ ops-dashboard —— 5 屏实时监控大屏（Hermes / NAS / 编辑器 / 事件流 / 交易中台）",
+        "📚 知识库流水线 —— 自动整理双链笔记",
+        "🤖 AI 网格交易机器人 —— OKX 原生网格 + 双机哨兵",
+        "🐍 技术栈：Python · Flask · WebSocket · launchd"
+      ],
+      "install": [
+        "git clone https://github.com/li77724121/leo-ai-os",
+        "按各子项目 README 独立部署",
+        "欢迎提 Issue / PR 一起开发"
+      ]
+    }
+  ]
+}
