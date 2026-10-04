@@ -51,8 +51,8 @@ function detail(p) {
 }
 
 function card(p) {
-  const plats = (p.platforms || []).map(x => `<span class="plat">${esc(x)}</span>`).join('');
-  const lic = p.license ? `<span class="plat">${esc(p.license)}</span>` : '';
+  const plats = [...new Set([...(p.platforms || []), p.license].filter(Boolean))]
+    .filter(x => x !== p.category).map(x => `<span class="plat">${esc(x)}</span>`).join('');
   const cat = p.category ? `<span class="badge">${esc(p.category)}</span>` : '';
   return `<article class="card" id="card-${esc(p.id)}">
     <div class="card-top">
@@ -63,7 +63,7 @@ function card(p) {
       </div>
     </div>
     <p class="summary">${esc(p.summary || '')}</p>
-    <div class="plats">${cat}${plats}${lic}</div>
+    <div class="plats">${cat}${plats}</div>
     <div class="card-actions" id="dl-${esc(p.id)}">${actionButtons(p, p.assets)}</div>
     <div class="meta" id="meta-${esc(p.id)}"></div>
     ${detail(p)}
