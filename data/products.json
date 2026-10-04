@@ -1,9 +1,8 @@
 {
   "site": {
     "name": "LEO 软件",
-    "tagline": "一个人 + AI 的软件工作室 · 免费 · 本地优先",
-    "github": "https://github.com/li77724121",
-    "guides": "https://li77724121.github.io/startup-guide/"
+    "tagline": "免费 · 本地优先 · 不收集数据",
+    "github": "https://github.com/li77724121"
   },
   "products": [
     {
@@ -13,13 +12,19 @@
       "category": "下载",
       "tagline": "本地文档转换器",
       "summary": "Word / PPT / Excel / PDF → Markdown，100% 本地处理，文件不出你的电脑，永久免费。",
-      "platforms": ["macOS"],
+      "platforms": [
+        "macOS"
+      ],
       "license": "免费",
       "repo": "li77724121/docconvert",
       "version": "1.0.0",
       "releaseUrl": "https://github.com/li77724121/docconvert/releases/latest",
       "assets": [
-        { "label": "macOS · Apple 芯片", "file": "DocConvert-1.0.0-macOS-arm64.dmg", "size": "83 MB" }
+        {
+          "label": "macOS · Apple 芯片",
+          "file": "DocConvert-1.0.0-macOS-arm64.dmg",
+          "size": "83 MB"
+        }
       ],
       "features": [
         "🔒 100% 本地处理 —— 文件不上传任何服务器，合同/机密/个人文档不出电脑",
@@ -40,7 +45,10 @@
       "category": "开源",
       "tagline": "一个人 + AI 的操作系统（开源协作）",
       "summary": "多任务监控大屏 · 知识库流水线 · AI 网格交易机器人。欢迎一起开发。",
-      "platforms": ["macOS", "Linux"],
+      "platforms": [
+        "macOS",
+        "Linux"
+      ],
       "license": "开源",
       "repo": "li77724121/leo-ai-os",
       "version": "",
